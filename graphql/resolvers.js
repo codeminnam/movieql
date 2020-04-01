@@ -1,12 +1,12 @@
-const Min = {
-    name: "minnie",
-    age: 26,
-    gender: "idk"
-};
+import {getMovies, getById, addMovie} from "./db";
 
 const resolvers = {
     Query: {
-        person: () => Min
+        movies: () => getMovies(),
+        movie: (_, {id}) => getById(id)
+    },
+    Mutation: {
+        addMovie: (_,{name, score}) => addMovie(name, score) 
     }
 };
 
